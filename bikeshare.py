@@ -190,7 +190,7 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
 
-        #ask if user wants to see raw data lines
+        # User interaction for requesting to show 5 lines of data and continue until users says no
         raw_data = input('\nWould you like to see the first 5 rows of raw data?\nPlease enter yes or no\n').lower()
         if raw_data in ('yes', 'y'):
             i = 0
@@ -200,7 +200,7 @@ def main():
             more_data = input('Would you like to see more data? Please enter yes or no:\n').lower()
             if more_data not in ('yes', 'y'):
                 break
-        #ask if user wants to restart
+        # User interaction for requestion to restart
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
