@@ -16,7 +16,7 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    
+
     # Def function for user to input city
     def get_city():
         while True:
@@ -36,7 +36,7 @@ def get_filters():
             break
         else:
             continue
-     
+
         # Get user input for month (all, january, february, ... , june)
     while True:
         month = input(f'Do you want to investigate all months or one particular month? Please enter one of the following: \nAll \nJanuary\nFebruary\nMarch,\nApril,\nMay,\nJune\n').lower()
@@ -45,7 +45,7 @@ def get_filters():
             break
         else:
             print(f'Sorry, "{month}" is not a valid answer, please choose again\n')
-    
+
     # Get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
          day = input(f'Do you want to investigate all days of the week or a particular day? Please enter one of the following: \nAll \nMonday \nTuesday \nWednesday \nThursday \nFriday \nSaturday \nSunday\n').lower()
@@ -54,7 +54,7 @@ def get_filters():
             break
          else:
             print(f'Your choice {day.title()} is not a valid answer, please choose again')
-            
+
     print('-'*40)
     return city, month, day
 
@@ -86,14 +86,14 @@ def load_data(city, month, day):
     # use the index of the months list to get the corresponding int
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
-        
+
     # filter by month to create the new dataframe
         df = df[df['month'] == month]
-    
+
     # filter by day of week if applicable
     if day != 'all':
         # filter by day of week to create the new dataframe
-        df = df[df['day_of_week'] == day.title()]     
+        df = df[df['day_of_week'] == day.title()]
 
     return df
 
@@ -102,7 +102,7 @@ def time_stats(df):
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
-    
+
     # Display most common month, day and hour
     popular_month = df['month'].mode()[0]
     popular_day = df['day_of_week'].mode()[0]
@@ -175,7 +175,7 @@ def user_stats(df):
         print('Most common year of birth:\n', df['Birth Year'].mode()[0])
     else:
         print('Sorry, there is no data available for Birth Year in your database')
-        
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -190,7 +190,7 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
 
-        #ask if user wants to see raw data lines
+        #ask if user wants to see the first 5 raw data lines of the chosen dataset
         raw_data = input('\nWould you like to see the first 5 rows of raw data?\nPlease enter yes or no\n').lower()
         if raw_data in ('yes', 'y'):
             i = 0
